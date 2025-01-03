@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+        <h1>Thông tin về event {{event.title}}</h1>
+        <h3>Thời gian bắt đầu  {{event.start_time}}</h3>
+        <h3>Thời gian kết thúc  {{event.end_time}}</h3>
+        <p>{{event.description}}</p>
+        <h2>Số người tham gia {{now_people}}/ {{event.max_people}}</h2>
+      
+      
+
+   
+    {% if auth %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit">Đăng ký</button>
+    </form>
+    {% endif %}
+</body>
+</html>

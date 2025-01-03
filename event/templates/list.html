@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>danh sách toàn bộ sự kiện hiện hành</title>
+</head>
+<style>
+    .column{
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<body>
+<div class="root">
+    <h1>Toàn bộ sự kiện đang diến ra</h1>
+ <span class="column">
+    {% for i in list %}
+    <a href="/event/{{i.id}}">{{i.title}}</a>
+    {% endfor %}
+ </span>
+</div>
+</body>
+</html>
