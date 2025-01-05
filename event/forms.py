@@ -6,7 +6,7 @@ from event.models import EventModel
 class CreateEventForm(forms.ModelForm):
     class Meta:
         model = EventModel
-        fields = ['title', 'description', 'max_people','start_time','end_time']
+        fields = ['title', 'description','thumb','image1','image2', 'max_people','start_time','end_time']
 
         widgets = {
             'title': forms.TextInput(attrs={"class": "title", 'placeholder': 'Nhập tên sự kiện'}),
@@ -20,3 +20,8 @@ class GetEvent(forms.ModelForm):
     class Meta:
         model =EventModel
         fields ="__all__"
+
+class EditEventForm(forms.ModelForm):
+    class Meta:
+        model =EventModel
+        fields =['title','description','thumb','image1','image2', 'max_people','start_time','end_time']

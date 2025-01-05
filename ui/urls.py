@@ -2,6 +2,6 @@ from rest_framework.urls import urlpatterns
 from django.urls import  path
 from . import  views
 urlpatterns =[
-        path('creator/',views.AdminPanel.as_view(),name="creator")
-
+        path('creator/',views.AdminPanel.as_view(),name="creator"),
+        path('',views.UserPanel.as_view(),name="user")
 ]

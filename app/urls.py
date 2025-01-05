@@ -16,10 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("user/",include("user.urls")),
     path("event/",include("event.urls")),
-    path("ui/",include("ui.urls"))
+    path("",include("ui.urls"))
 ]
+
+
+if settings.DEBUG:  # Chỉ thêm dòng này khi DEBUG=True
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

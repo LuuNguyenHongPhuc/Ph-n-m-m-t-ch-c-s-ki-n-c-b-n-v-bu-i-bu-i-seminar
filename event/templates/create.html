@@ -4,27 +4,7 @@
     <meta charset="UTF-8">
     <title>Tạo event mới</title>
     <style>
-        body{
-           height: 100vh;
-           width: 100vw;
-           margin: 0;
-           padding: 0;
-           overflow: hidden;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-        }
-        .root{
-            height: 50vh;
-            width: 50%;
-        }
-        p{
-            display: flex;
-            align-items: start;
-        }
-        label {
-            margin-right: 1rem;
-        }
+  
     </style>
 </head>
 
@@ -34,7 +14,7 @@
 
 <div class="root">
     <H1>Tạo sự kiện mới</H1>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
         {{ form.as_p }}
 

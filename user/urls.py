@@ -1,11 +1,13 @@
 from django.urls import path
 from . import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('login/', views.dangnhap, name='login'),
-    # Đường dẫn đến view đăng nhập
+  
     path('register/', views.dangky, name='register'),
 
-    path('home/',views.home,name="home"),
+    path('info/',views.UserInfo.as_view(),name="info"),
     path('logout/',views.logout_view,name="logout")
 ]
+

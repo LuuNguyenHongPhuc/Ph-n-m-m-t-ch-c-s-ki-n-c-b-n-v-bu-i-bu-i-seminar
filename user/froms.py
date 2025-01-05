@@ -2,18 +2,23 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from .models import UserModel
 
-
+from django.contrib.auth import authenticate
 class RegisterForm(UserCreationForm):
     class Meta:
         model = UserModel
-        fields = ['cccd', 'email', 'is_admin', 'password1', 'password2']
+        fields = ['cccd', 'email' ,'avatar', 'is_admin', 'password1', 'password2']
+        widgets={
+            'cccd' :forms.TextInput(
+                
+                attrs={'class':'cccd','placeholder':'Nhập căn cước công dân'}),
+
+  
+
+        }
 
 
 
 
-from django import forms
-from .models import UserModel
-from django.contrib.auth import authenticate
 
 
 class LoginForm(forms.Form):

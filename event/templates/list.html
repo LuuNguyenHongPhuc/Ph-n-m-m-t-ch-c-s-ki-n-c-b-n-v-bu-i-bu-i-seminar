@@ -1,23 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>danh sách toàn bộ sự kiện hiện hành</title>
+    <title>Danh sách toàn bộ sự kiện hiện hành</title>
+    <style>
+        :root {
+            --teal: #008080;
+            --teal-light: #e0f2f2;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --text: #333333;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--teal-light) 0%, var(--white) 100%);
+            min-height: 100vh;
+            color: var(--text);
+            display: flex;
+            align-items: start;
+            justify-content: center;
+        }
+
+        .root {
+            max-width: 65rem;
+            min-width: 50rem;
+            min-height: 100vh;
+            background-color: white;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-left: 3rem;
+        }
+
+        .card {
+            display: flex;
+            gap: 1rem;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 5rem;
+            text-decoration: none;
+            color: teal;
+            text-align: start;
+
+            font-size: 0.9rem;
+
+        }
+
+        .card:hover {
+            background-color: teal;
+            color: white;
+
+
+        }
+
+        img {
+            flex-shrink: 0;
+            height: 5rem;
+            width: 8rem;
+            object-fit: cover;
+
+        }
+        .fix{
+           text-decoration: none;
+           color: teal;
+           font-size: 1.1rem;
+        }
+    </style>
 </head>
-<style>
-    .column{
-        display: flex;
-        flex-direction: column;
-    }
-</style>
+
 <body>
-<div class="root">
-    <h1>Toàn bộ sự kiện đang diến ra</h1>
- <span class="column">
-    {% for i in list %}
-    <a href="/event/{{i.id}}">{{i.title}}</a>
-    {% endfor %}
- </span>
-</div>
+    <div class="root">
+        <h1>Toàn bộ sự kiện đang diễn ra</h1>
+        <div class="column">
+            {% for i in list %}
+            <a class="card" href="{% url 'event' id_event=i.id %}">
+                <img id="thumb" src="{{i.thumb.url}}" alt="">
+
+                <span>
+                    <h4>{{i.title}}</h4>
+                    <span>Start {{i.start_time}} / End: {{i.end_time}} <span>Tác giả</span> </span>
+                </span>
+                
+            </a>
+            {% if user.is_admin %}
+                <a class="fix" href="{%url 'edit_event' id_event=i.id %}">
+                    Sửa thông tin event
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </body>
+
 </html>

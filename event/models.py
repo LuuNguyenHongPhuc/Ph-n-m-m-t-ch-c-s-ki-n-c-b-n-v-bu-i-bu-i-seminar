@@ -3,12 +3,7 @@ import uuid
 from user.models import UserModel 
 import datetime
 
-class Image(models.Model):
-    path = models.CharField(max_length=255, default="")  
-    name = models.CharField(max_length=255, default="") 
 
-    def __str__(self):
-        return self.name or "Không có ảnh"
 
 
 class EventModel(models.Model):
@@ -19,11 +14,15 @@ class EventModel(models.Model):
     max_people = models.IntegerField(default=0)  
     start_time =models.DateField(default=datetime.date.today )
     end_time =models.DateField(default=datetime.date.today)
-    
-    images = models.ManyToManyField(    Image, related_name="events", blank=True  )
+    thumb =models.ImageField(blank=True,null=True,upload_to="thumb")
+    image1  =models.ImageField(blank=True,null=True,upload_to="img1")
+    image2 =models.ImageField(blank=True,null=True,upload_to="img2")
+
+
 
     all_user_registed = models.ManyToManyField(      UserModel, related_name="registered_events", blank=True
     )
+   
     def check_event_is_expire(self):
         return datetime.date.today()> self.end_time
     def __str__(self):
